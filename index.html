@@ -1,0 +1,128 @@
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Filter/ Search Table</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;800;900&display=swap">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div style="height: 100vh" class="d-flex mt-4 justify-content-center align-items-start">
+    <div class="container">
+      <h1 class="display-1 text-danger my-4">Filter/ Search Table</h1>
+
+      <input type="text" onkeyup="filterTable()" id="searchInput" class="form-control form-control-lg mb-4" placeholder="Search...">
+
+      <table width="100%" cellspacing="0" cellpadding="0" id="tableData">
+        <tr>
+          <th>Company</th>
+          <th>Contact</th>
+          <th>Country</th>
+        </tr>
+        <tr>
+          <td>Alfreds Futterkiste</td>
+          <td>Maria Anders</td>
+          <td>Germany</td>
+        </tr>
+        <tr>
+          <td>Centro comercial Moctezuma</td>
+          <td>Francisco Chang</td>
+          <td>Mexico</td>
+        </tr>
+        <tr>
+          <td>Ernst Handel</td>
+          <td>Roland Mendel</td>
+          <td>Austria</td>
+        </tr>
+        <tr>
+          <td>Island Trading</td>
+          <td>Helen Bennett</td>
+          <td>UK</td>
+        </tr>
+        <tr>
+          <td>Laughing Bacchus Winecellars</td>
+          <td>Yoshi Tannamuri</td>
+          <td>Canada</td>
+        </tr>
+        <tr>
+          <td>Magazzini Alimentari Riuniti</td>
+          <td>Giovanni Rovelli</td>
+          <td>Italy</td>
+        </tr>
+        <tr>
+          <td>Petrochemicals, Oil & Gas</td>
+          <td>Mukesh Ambani</td>
+          <td>India</td>
+        </tr>
+        <tr>
+          <td>Commodities, Infrastructure</td>
+          <td>Gautam Adani</td>
+          <td>Japan</td>
+        </tr>
+        <tr>
+          <td>Diversified</td>
+          <td>Hinduja Brothers</td>
+          <td>Pakistan</td>
+        </tr>
+        <tr>
+          <td>Construction</td>
+          <td>Pallonji Mistry</td>
+          <td>Bangladesh</td>
+        </tr>
+        <tr>
+          <td>Banking</td>
+          <td>Uday Kotak</td>
+          <td>Turkey</td>
+        </tr>
+        <tr>
+          <td>Software Services</td>
+          <td>Shiv Nadar</td>
+          <td>Myanmar</td>
+        </tr>
+        <tr>
+          <td>Investments, Retail</td>
+          <td>Radhakishan Damani</td>
+          <td>Srilanka</td>
+        </tr>
+        <tr>
+          <td>Godrej Group</td>
+          <td>Godrej Family</td>
+          <td>Cambodia</td>
+        </tr>
+        <tr>
+          <td>Steel</td>
+          <td>Lakshmi Mittal</td>
+          <td>Afganistan</td>
+        </tr>
+        <tr>
+          <td>Motorcycles</td>
+          <td>Kumar Birla</td>
+          <td>Indonasia</td>
+        </tr>
+      </table>
+      <!-- <div id="noData">No Data Available</div> -->
+    </div>
+    <script>      
+      const filterTable = () => {
+        let searchInput = document.getElementById("searchInput");
+        let searchInputValue = searchInput.value.toLowerCase();
+
+        let tableData = document.getElementById("tableData");
+
+        let tr = tableData.getElementsByTagName("tr");
+
+        for(var i = 0; i<tr.length; i++){
+          let td = tr[i].getElementsByTagName("td")[0];
+          if(td){
+            if(td.textContent.toLowerCase().indexOf(searchInputValue) > -1){
+              tr[i].style.display = '';
+            }else{
+              tr[i].style.display = 'none';
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+  </html>
